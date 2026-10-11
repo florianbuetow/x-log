@@ -14,16 +14,16 @@ XLog has two parts: a Chrome extension that records the posts X already renders 
 
 ## Quick start
 
-You need Node.js 24.0.0+, npm, and Chrome.
+You need Node.js 24.0.0+, npm, [just](https://github.com/casey/just), and Chrome.
 
 ```bash
 npm install
-npm run build
+just build
 node dist/index.js init-feed data/x-feed.sqlite
-node dist/index.js serve data/x-feed.sqlite
+just start
 ```
 
-With [just](https://github.com/casey/just) installed, `just start` builds and runs the service in the background, and `just stop` stops it. A new feed follows nobody, so add the accounts you want in the extension popup.
+`just start` runs the service in the background and writes its log to `data/service.log`; `just stop` stops it. A new feed follows nobody, so add the accounts you want in the extension popup.
 
 The extension stores nothing itself. It sends every capture to the local service at `http://127.0.0.1:4318`, so the service must be running whenever you browse X, or nothing is saved. The service also accepts browser requests only from a Chrome extension, so other web pages cannot write to your archive.
 
@@ -60,7 +60,7 @@ While the service runs, you can inspect the archive in a browser:
 - <http://127.0.0.1:4318/api/events?limit=100> for the newest capture events
 - <http://127.0.0.1:4318/api/config> for the followed handles
 
-To move an older JSON archive into SQLite, stop the service and run:
+To move an older JSON archive into SQLite, run `just stop` and then:
 
 ```bash
 node dist/index.js migrate-feed data/x-feed.json data/x-feed.sqlite
@@ -110,7 +110,7 @@ Tests live in `test/`: `unit/` for each layer, `property/` for fast-check proper
 
 Tool configuration (TypeScript, Prettier, oxlint, Vitest, Stryker, knip, dependency-cruiser, ts-archunit, Gitleaks, Semgrep, codespell, CodeQL) lives in `config/`. Only `.semgrepignore` stays at the root, because Semgrep reads it only from there.
 
-Install [just](https://github.com/casey/just) to use the project commands:
+All project commands run through `just`:
 
 ```bash
 just init       # install dependencies, activate the pre-commit hook

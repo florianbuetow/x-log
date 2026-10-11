@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>XLog capture log</title>
+    <link rel="stylesheet" href="sidepanel.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Capture log</h1>
+      <p id="total" class="total">Loading…</p>
+    </header>
+
+    <main>
+      <p id="connection" class="connection" role="status" aria-live="polite">
+        Connecting to the local service…
+      </p>
+      <p id="empty" class="empty" hidden>
+        No captures yet. Browse a followed profile or conversation on X to add
+        posts.
+      </p>
+      <ol id="events" class="events" aria-label="Newest captures"></ol>
+    </main>
+
+    <script src="sidepanel.js"></script>
+  </body>
+</html>

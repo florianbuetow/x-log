@@ -1,0 +1,155 @@
+:root {
+  color-scheme: light dark;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: Canvas;
+  color: CanvasText;
+}
+
+header {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px;
+  border-bottom: 1px solid color-mix(in srgb, CanvasText 16%, transparent);
+  background: Canvas;
+}
+
+h1,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 21px;
+  line-height: 1.2;
+}
+
+.total,
+.connection,
+.event-meta {
+  font-size: 12px;
+}
+
+.total {
+  flex: none;
+  color: GrayText;
+}
+
+main {
+  padding: 14px 18px 24px;
+}
+
+.connection {
+  min-height: 18px;
+  margin-bottom: 10px;
+  color: #16803b;
+}
+
+.connection[data-kind='error'] {
+  color: #c52b2b;
+  font-weight: 650;
+}
+
+.empty {
+  margin-top: 32px;
+  color: GrayText;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.events {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.event {
+  padding: 14px 0;
+  border-bottom: 1px solid color-mix(in srgb, CanvasText 12%, transparent);
+}
+
+.event:first-child {
+  padding-top: 6px;
+}
+
+.event-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 7px;
+  color: GrayText;
+}
+
+.event-kind {
+  border-radius: 999px;
+  padding: 2px 7px;
+  background: color-mix(in srgb, #1d9bf0 15%, Canvas);
+  color: #0876bd;
+  font-weight: 700;
+}
+
+.event-kind[data-kind='thread'] {
+  background: color-mix(in srgb, #7856ff 15%, Canvas);
+  color: #6444db;
+}
+
+.event-title {
+  display: inline-block;
+  color: CanvasText;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.event-title:hover {
+  color: #0876bd;
+}
+
+.event-title:focus-visible {
+  border-radius: 2px;
+  outline: 3px solid #1d9bf0;
+  outline-offset: 3px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .connection {
+    color: #55c77b;
+  }
+
+  .connection[data-kind='error'] {
+    color: #ff7777;
+  }
+
+  .event-kind {
+    color: #6fc3fa;
+  }
+
+  .event-kind[data-kind='thread'] {
+    color: #a993ff;
+  }
+
+  .event-title:hover {
+    color: #6fc3fa;
+  }
+}

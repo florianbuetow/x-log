@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>XLog Capture</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>XLog Capture</h1>
+        <p>Profiles captured as you browse X</p>
+        <p id="saved-count" aria-live="polite">Loading saved post count…</p>
+      </header>
+
+      <button id="open-log" class="open-log" type="button">
+        Open capture log
+      </button>
+
+      <form id="add-form">
+        <label for="handle">Follow an X profile</label>
+        <div class="input-row">
+          <span aria-hidden="true">@</span>
+          <input
+            id="handle"
+            name="handle"
+            autocomplete="off"
+            placeholder="Handle or https://x.com URL"
+            required
+          />
+          <button type="submit">Add</button>
+        </div>
+      </form>
+
+      <section aria-labelledby="followed-title">
+        <h2 id="followed-title">Followed profiles</h2>
+        <ul id="handles" aria-live="polite"></ul>
+        <p id="empty" hidden>No profiles configured.</p>
+      </section>
+
+      <section class="scrolling" aria-labelledby="scrolling-title">
+        <div class="section-heading">
+          <h2 id="scrolling-title">Scrolling</h2>
+          <button id="stop-scroll" class="stop-scroll" type="button" hidden>
+            Stop
+          </button>
+        </div>
+        <p id="scroll-status" aria-live="polite">
+          Choose the robot beside a profile. Scrolling runs for up to five
+          minutes and stops when you press a mouse button.
+        </p>
+      </section>
+
+      <p id="status" role="status" aria-live="polite">Loading configuration…</p>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

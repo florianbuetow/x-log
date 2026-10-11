@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "XLog Capture",
+  "version": "0.1.0",
+  "minimum_chrome_version": "116",
+  "description": "Captures configured X profiles and threads while you browse, with optional five-minute profile scrolling.",
+  "permissions": ["sidePanel", "storage"],
+  "host_permissions": [
+    "http://127.0.0.1:4318/*",
+    "https://x.com/*",
+    "https://www.x.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "XLog Capture",
+    "default_popup": "popup.html"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://x.com/*", "https://www.x.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

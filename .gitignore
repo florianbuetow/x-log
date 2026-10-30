@@ -16,3 +16,5 @@ npm-debug.log*
 # Local user data and generated archives.
 data/
 .copier-answers.yml
+data/input/
+data/output/
